@@ -6,6 +6,9 @@ But the @ridhomuh002 code was incorrect, in my opinion - the wrong mask of bits 
 So I used a filter for clouds, cloud shadow and cirrus clouds. Also, the atmospheric correction and emissivity calibration have already been done in the product,
 so I skipped them. See: Landsat Data Format Control Book (DFCB) (https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1328_Landsat8-9_OLI-TIRS-C2-L2_DFCB-v7.pdf)
 I add conversion to celsius, and some other minor changes ...
+
+Also note that this L2 product is calculated from the emissivities measured by the ASTER sensor. However, these emissivities have holes (nodata) somewhere. Such places will have always nodata as result. 
+See https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature-data-gaps-due-missing-aster-ged
 */
 
 var aoi = ee.FeatureCollection("projects/ee-moravec/assets/CR_WGS"); // CZ polygon - change if you need different 
