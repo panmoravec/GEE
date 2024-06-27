@@ -1,8 +1,11 @@
 /*
-BASED ON: https://medium.com/@ridhomuh002/analyzing-land-surface-temperature-lst-with-landsat-8-data-in-google-earth-engine-f4dd7ca28e70
-But the original code was incorrect, in my opinion - the wrong mask of bits (he used bit mask 3,5 for clouds (but bit 5 is snow)), 
+BASED ON: https://medium.com/@ridhomuh002/analyzing-land-surface-temperature-lst-with-landsat-8-data-in-google-earth-engine-f4dd7ca28e70,
+which probably and unadmittedly used the code: https://developers.google.com/earth-engine/guides/arrays_sorting_reducing
+
+But the @ridhomuh002 code was incorrect, in my opinion - the wrong mask of bits (he used bit mask 3,5 for clouds (but bit 5 is snow)), 
 So I used a filter for clouds, cloud shadow and cirrus clouds. Also, the atmospheric correction and emissivity calibration have already been done in the product,
 so I skipped them. See: Landsat Data Format Control Book (DFCB) (https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1328_Landsat8-9_OLI-TIRS-C2-L2_DFCB-v7.pdf)
+I add conversion to celsius, and some other minor changes ...
 */
 
 var aoi = ee.FeatureCollection("projects/ee-moravec/assets/CR_WGS"); // CZ polygon - change if you need different 
