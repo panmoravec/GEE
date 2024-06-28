@@ -1,9 +1,9 @@
 /*
 Created by: David Moravec (dmoravec@fzp.czu.cz) CC-BY
 BASED ON: https://medium.com/@ridhomuh002/analyzing-land-surface-temperature-lst-with-landsat-8-data-in-google-earth-engine-f4dd7ca28e70,
-which probably and unadmittedly used the code: https://developers.google.com/earth-engine/guides/arrays_sorting_reducing
+which probably used also the code: https://developers.google.com/earth-engine/guides/arrays_sorting_reducing
 
-But the @ridhomuh002 code was incorrect, in my opinion - the wrong mask of bits (he used bit mask 3,5 for clouds (but bit 5 is snow)), 
+But the original @ridhomuh002 code was incorrect, in my opinion - the wrong mask of bits (he used bit mask 3,5 for clouds (but bit 5 is snow)), 
 So I used a filter for clouds, cloud shadow and cirrus clouds. Also, the atmospheric correction and emissivity calibration have already been done in the product,
 so I skipped them. See: Landsat Data Format Control Book (DFCB) (https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1328_Landsat8-9_OLI-TIRS-C2-L2_DFCB-v7.pdf)
 I add conversion to celsius, and some other minor changes ...
@@ -77,7 +77,7 @@ Map.addLayer(image.select('ST_B10'), {
     'ff0000', 'de0101', 'c21301', 'a71001', '911003'
   ]}, 'Land Surface Temperature');
 
-// /*
+/*
 Export.image.toDrive({
   image: image.select('ST_B10'),
   description: 'LST_2016',
@@ -86,7 +86,7 @@ Export.image.toDrive({
   fileFormat: 'GeoTIFF',
   maxPixels: 3100100100,  // set bigger in case of need
 });
-// */
+*/
 
 
 
